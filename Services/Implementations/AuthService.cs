@@ -92,6 +92,30 @@ public class AuthService : IAuthService
             throw;
         }
     }
+
+    public async Task<User?> UpdateProfileAsync(int userId, UpdateProfileDto updateProfileDto)
+    {
+        try
+        {
+            User? user = await _userRepository.GetByIdAsync(userId);
+            if (user == null)
+            {
+                return null;
+            }
+            user.Address = updateProfileDto.Address;
+            user.City = updateProfileDto.City;
+            user.State = updateProfileDto.State;
+            user.PostalCode = updateProfileDto.PostalCode;
+            user.PhoneNumber = updateProfileDto.PhoneNumber;
+
+            return await _userRepository.UpdateAsync(user);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Error in UpdateProfileAsync: {ex.Message}");
+            throw;
+        }
+    }
     private string GenerateToken(User user)
     {
         try

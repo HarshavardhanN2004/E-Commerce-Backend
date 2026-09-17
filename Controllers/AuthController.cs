@@ -77,4 +77,39 @@ public class AuthController : ControllerBase
             return StatusCode(StatusCodes.Status500InternalServerError,"An unexpected error occurred while fetching profile.");
         }
     }
+
+    [HttpPut("profile")]
+    [Authorize]
+    public async Task<IActionResult> UpdateProfile([FromBody] UpdateProfileDto updateProfileDto)
+    {
+        try
+        {
+            var userIdValue = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            if (!int.TryParse(userIdValue,out int userId))
+            {
+                return Unauthorized("Invalid user token.");
+            }
+            var updatedUser = await _authService.UpdateProfileAsync(userId,updateProfileDto);
+            if (updatedUser == null)
+            {
+                return NotFound("User not found.");
+            }
+            return Ok(new
+            {
+                updatedUser.UserId,
+                updatedUser.Name,
+                updatedUser.Email,
+                updatedUser.Role,
+                updatedUser.Address,
+                updatedUser.City,
+                updatedUser.State,
+                updatedUser.PostalCode,
+                updatedUser.PhoneNumber
+            });
+        }
+        catch (Exception)
+        {
+            return StatusCode(StatusCodes.Status500InternalServerError,"An unexpected error occurred while updating profile.");
+        }
+    }
 }

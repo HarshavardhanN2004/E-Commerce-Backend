@@ -53,4 +53,19 @@ public class UserRepository : IUserRepository
             throw;
         }
     }
+
+    public async Task<User?> UpdateAsync(User user)
+    {
+        try
+        {
+            _context.Users.Update(user);
+            await _context.SaveChangesAsync();
+            return user;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Error in UpdateAsync: {ex.Message}");
+            throw;
+        }
+    }
 }
