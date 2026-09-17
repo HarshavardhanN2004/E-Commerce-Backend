@@ -31,7 +31,7 @@ public class AuthController : ControllerBase
         }
         catch (Exception)
         {
-            return StatusCode(StatusCodes.Status500InternalServerError,"An unexpected error occurred.");
+            return StatusCode(500, "An unexpected error occurred.");
         }
     }
 
@@ -50,7 +50,7 @@ public class AuthController : ControllerBase
         }
         catch (Exception)
         {
-            return StatusCode(StatusCodes.Status500InternalServerError,"An unexpected error occurred.");
+            return StatusCode(500, "An unexpected error occurred.");
         }
     }
 
@@ -74,7 +74,7 @@ public class AuthController : ControllerBase
         }
         catch (Exception)
         {
-            return StatusCode(StatusCodes.Status500InternalServerError,"An unexpected error occurred while fetching profile.");
+            return StatusCode(500, "An unexpected error occurred.");
         }
     }
 
@@ -109,7 +109,7 @@ public class AuthController : ControllerBase
         }
         catch (Exception)
         {
-            return StatusCode(StatusCodes.Status500InternalServerError,"An unexpected error occurred while updating profile.");
+            return StatusCode(500, "An unexpected error occurred while updating profile.");
         }
     }
 }

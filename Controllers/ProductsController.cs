@@ -52,7 +52,7 @@ public class ProductsController : ControllerBase
 
     [HttpPost]
     [Authorize(Roles = "Admin")]
-    public async Task<IActionResult> Create([FromForm] ProductFormDto productFormDto)
+    public async Task<IActionResult> Create( ProductFormDto productFormDto)
     {
         try
         {
@@ -68,7 +68,7 @@ public class ProductsController : ControllerBase
 
     [HttpPut("{productId:int}")]
     [Authorize(Roles = "Admin")]
-    public async Task<IActionResult> Update(int productId, [FromForm] ProductFormDto productFormDto)
+    public async Task<IActionResult> Update(int productId,ProductFormDto productFormDto)
     {
         try
         {

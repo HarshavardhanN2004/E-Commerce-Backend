@@ -20,7 +20,7 @@ public class OrdersController : ControllerBase
 
     [HttpPost]
     [Authorize(Roles = "Customer")]
-    public async Task<IActionResult> PlaceOrder([FromBody] OrderDto orderDto)
+    public async Task<IActionResult> PlaceOrder(OrderDto orderDto)
     {
         try
         {
@@ -97,7 +97,7 @@ public class OrdersController : ControllerBase
 
     [HttpPut("{orderId:int}/status")]
     [Authorize(Roles = "Admin")]
-    public async Task<IActionResult> UpdateStatus(int orderId,[FromBody] string status)
+    public async Task<IActionResult> UpdateStatus(int orderId, string status)
     {
         try
         {
