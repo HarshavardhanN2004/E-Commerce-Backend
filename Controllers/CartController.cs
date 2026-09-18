@@ -32,7 +32,7 @@ public class CartController : ControllerBase
     }
 
     [HttpPost("items")]
-    public async Task<IActionResult> AddItem([FromBody] CartItemDto cartItemDto)
+    public async Task<IActionResult> AddItem( CartItemDto cartItemDto)
     {
         try
         {

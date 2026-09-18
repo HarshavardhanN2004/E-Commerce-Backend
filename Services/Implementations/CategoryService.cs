@@ -22,7 +22,8 @@ public class CategoryService : ICategoryService
             return categories.Select(category => new CategoryDto
             {
                 CategoryId = category.CategoryId,
-                CategoryName = category.CategoryName
+                CategoryName = category.CategoryName,
+                Description = category.Description
             }).ToList();
         }
         catch(Exception ex) 
@@ -44,7 +45,8 @@ public class CategoryService : ICategoryService
             return new CategoryDto
             {
                 CategoryId = category.CategoryId,
-                CategoryName = category.CategoryName
+                CategoryName = category.CategoryName,
+                Description = category.Description
             };
         }
         catch(Exception ex)
@@ -60,7 +62,8 @@ public class CategoryService : ICategoryService
         {
             Category category = new Category
             {
-                CategoryName = dto.CategoryName
+                CategoryName = dto.CategoryName,
+                Description = dto.Description
             };
 
             Category created = await _categoryRepository.AddAsync(category);
@@ -68,7 +71,8 @@ public class CategoryService : ICategoryService
             return new CategoryDto
             {
                 CategoryId = created.CategoryId,
-                CategoryName = created.CategoryName
+                CategoryName = created.CategoryName,
+                Description = created.Description
             };
         }
         catch( Exception ex) 
@@ -88,13 +92,15 @@ public class CategoryService : ICategoryService
                 return null;
 
             category.CategoryName = dto.CategoryName;
+            category.Description = dto.Description;
 
             Category updated = await _categoryRepository.UpdateAsync(category);
 
             return new CategoryDto
             {
                 CategoryId = updated.CategoryId,
-                CategoryName = updated.CategoryName
+                CategoryName = updated.CategoryName,
+                Description = updated.Description
             };
         }
         catch(Exception ex)

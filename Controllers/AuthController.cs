@@ -18,7 +18,7 @@ public class AuthController : ControllerBase
     }
 
     [HttpPost("register")]
-    public async Task<IActionResult> Register([FromBody] RegisterRequestDto registerRequest)
+    public async Task<IActionResult> Register( RegisterRequestDto registerRequest)
     {
         try
         {
@@ -36,7 +36,7 @@ public class AuthController : ControllerBase
     }
 
     [HttpPost("login")]
-    public async Task<IActionResult> Login([FromBody] LoginRequestDto loginRequest)
+    public async Task<IActionResult> Login( LoginRequestDto loginRequest)
     {
         try
         {
@@ -80,7 +80,7 @@ public class AuthController : ControllerBase
 
     [HttpPut("profile")]
     [Authorize]
-    public async Task<IActionResult> UpdateProfile([FromBody] UpdateProfileDto updateProfileDto)
+    public async Task<IActionResult> UpdateProfile( UpdateProfileDto updateProfileDto)
     {
         try
         {
