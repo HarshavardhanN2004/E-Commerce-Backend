@@ -242,6 +242,22 @@ React Frontend
 
 ---
 
+To run the backend:
+
+1. Open the `E-Commerce-Backend` project in Visual Studio.
+2. Make sure SQL Server is running.
+3. Make sure the database connection string is configured correctly.
+4. Run the project.
+
+Backend API:
+
+https://localhost:7198
+
+Swagger API Documentation:
+
+https://localhost:7198/swagger
+
+
 ##  Future Enhancements
 
 * Online payment integration
