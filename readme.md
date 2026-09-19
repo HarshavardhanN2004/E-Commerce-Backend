@@ -195,7 +195,6 @@ Users
 The API can be tested using:
 
 * Swagger
-* React frontend
 
 Swagger provides an interactive interface for testing the API endpoints.
 
